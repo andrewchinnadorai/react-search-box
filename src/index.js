@@ -40,6 +40,7 @@ export default class ReactSearchBox extends Component {
     fuseConfigs: PropTypes.object,
     autoFocus: PropTypes.bool,
     onSelect: PropTypes.func,
+    onKeyPress: PropTypes.func,
     onFocus: PropTypes.func,
     onChange: PropTypes.func,
     inputBoxFontColor: PropTypes.string,
@@ -132,7 +133,7 @@ export default class ReactSearchBox extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { data, fuseConfigs } = this.props
+    const { data, fuseConfigs, showDropdown } = this.props
 
     if (prevProps.data !== data) {
       /**
@@ -141,6 +142,10 @@ export default class ReactSearchBox extends Component {
       const configs = Object.assign({}, this.defaultFuseConfigs, fuseConfigs)
 
       this.fuse = new Fuse(data, configs)
+    }
+
+    if (prevProps.showDropdown !== showDropdown) {
+      this.setState({ showDropdown: this.props.showDropdown })
     }
   }
 
@@ -206,6 +211,7 @@ export default class ReactSearchBox extends Component {
         placeholder={placeholder}
         value={value}
         onChange={this.handleInputChange}
+        onKeyPress={this.props.onKeyPress}
         autoFocus={autoFocus ? autoFocus : undefined}
         onFocus={onFocus ? onFocus : undefined}
         inputBoxFontColor={inputBoxFontColor}

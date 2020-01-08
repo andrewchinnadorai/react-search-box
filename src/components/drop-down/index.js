@@ -13,6 +13,7 @@ class DropDown extends Component {
      * dropDownBorderColor: Border color of the dropdown.
      */
     onClick: PropTypes.func,
+    onKeyPress: PropTypes.func,
     matchedRecords: PropTypes.array,
     dropDownHoverColor: PropTypes.string,
     dropDownBorderColor: PropTypes.string,
@@ -31,6 +32,7 @@ class DropDown extends Component {
       onClick,
       dropDownHoverColor,
       dropDownBorderColor,
+      onKeyPress,
     } = this.props
 
     return (

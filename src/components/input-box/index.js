@@ -19,6 +19,7 @@ class InputBox extends Component {
     value: PropTypes.string,
     onChange: PropTypes.func,
     onFocus: PropTypes.func,
+    onKeyPress: PropTypes.func,
     inputBoxFontColor: PropTypes.string,
     inputBoxBorderColor: PropTypes.string,
     inputBoxFontSize: PropTypes.string,
@@ -40,6 +41,7 @@ class InputBox extends Component {
       value,
       onChange,
       onFocus,
+      onKeyPress,
       inputBoxFontColor,
       inputBoxBorderColor,
       inputBoxFontSize,
@@ -52,6 +54,7 @@ class InputBox extends Component {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onKeyPress={onKeyPress}
         onFocus={onFocus}
         ref={input => {
           this.input = input
